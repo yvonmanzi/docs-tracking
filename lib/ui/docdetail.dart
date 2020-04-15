@@ -64,7 +64,7 @@ class _DocDetailState extends State<DocDetail> {
         ? initialDate
         : now);
 
-    Datepicker.showDatePicker(context, showTitleActions: true,
+    DatePicker.showDatePicker(context, showTitleActions: true,
         onConfirm: (date) {
       setState(() {
         DateTime dt = date;
@@ -138,6 +138,7 @@ class _DocDetailState extends State<DocDetail> {
 
     return Scaffold(
       key: _scaffoldKey,
+      //this is UF
       resizeToAvoidBottomPadding: false,
       appBar: AppBar(
         title: Text(ttl != "" ? ttl : "New Doc"),
@@ -159,13 +160,15 @@ class _DocDetailState extends State<DocDetail> {
       ),
       body: Form(
         key: _formKey,
+        //UF
         autovalidate: true,
         child: SafeArea(
           top: false,
           bottom: false,
           child: ListView(
-            padding: const EdgeInsets.symmetric(horizontal: 16.p),
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
             children: <Widget>[
+              //UF, but def super interesting
               TextFormField(
                 inputFormatters: [
                   WhitelistingTextInputFormatter(RegExp("[a-zA-Z0-9]")),
@@ -180,11 +183,13 @@ class _DocDetailState extends State<DocDetail> {
               ),
               Row(
                 children: <Widget>[
+                  //Familiar, but don't really know Expanded really works at the mineral level
                   Expanded(
                     child: TextFormField(
                       controller: expirationCtrl,
                       maxLength: 10,
                       decoration: InputDecoration(
+                          icon: Icon(Icons.calendar_today),
                           hintText: "Expiry date (i.e." +
                               DateUtils.daysAheadAsStr(daysAhead) +
                               ")",
@@ -196,6 +201,7 @@ class _DocDetailState extends State<DocDetail> {
                     ),
                   ),
                   IconButton(
+                    //UF
                     icon: Icon(Icons.more_horiz),
                     tooltip: "choose date",
                     onPressed: () {
@@ -204,6 +210,8 @@ class _DocDetailState extends State<DocDetail> {
                   )
                 ],
               ),
+
+              //UF, this might work like a SizedBox? yeah they do play the same role.
               Row(
                 children: <Widget>[
                   Expanded(

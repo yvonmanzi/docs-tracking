@@ -1,3 +1,5 @@
+import 'package:mdcapp/util/util.dart';
+
 class Doc {
   int id;
   String title;

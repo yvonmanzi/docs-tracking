@@ -43,8 +43,8 @@ class DbHelper {
 
   Future<Database> initializeDb() async {
     Directory d = await getApplicationDocumentsDirectory();
-    Stirng p = d.path + "/docexpire.db";
-    var db = await openDatabase(p, verion: 1, onCreate: _createDb);
+    String p = d.path + "/docexpire.db";
+    var db = await openDatabase(p, version: 1, onCreate: _createDb);
     return db;
   }
 
@@ -69,7 +69,7 @@ class DbHelper {
   Future<List<Map<String, dynamic>>> getDocs() async {
     Database db = await this.db;
     var r =
-        await db.rawquery("SELECT * FROM $tblDocs ORDER BY $docExpiration ASC");
+        await db.rawQuery("SELECT * FROM $tblDocs ORDER BY $docExpiration ASC");
     return r;
   }
 
@@ -106,7 +106,7 @@ class DbHelper {
 
 // Get the max document id av on the db
   Future<int> getMaxId() async {
-    Database db = await this.sb;
+    Database db = await this.db;
     var r = Sqflite.firstIntValue(
         await db.rawQuery("SELECT MAX(id) FROM $tblDocs"));
     return r;
