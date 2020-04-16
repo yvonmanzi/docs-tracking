@@ -160,11 +160,10 @@ class _DocDetailState extends State<DocDetail> {
       ),
       body: Form(
         key: _formKey,
-        //UF
+        //this makes sense now. when set to false, it means, validate when i'm done filling out the entire form.
         autovalidate: true,
+        // SafeArea is about preventing os from intruding to your widgets.
         child: SafeArea(
-          top: false,
-          bottom: false,
           child: ListView(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             children: <Widget>[

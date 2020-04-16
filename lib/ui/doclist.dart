@@ -30,7 +30,7 @@ class _DocListState extends State<DocList> {
   }
 
   Future getData() async {
-    final Future dbFuture = dbh.db; // this might rise a prob in the future.
+    final dbFuture = dbh.db; // this might rise a prob in the future.
     dbFuture.then((result) {
       final docsFuture = dbh.getDocs();
       docsFuture.then((result) {
@@ -40,13 +40,15 @@ class _DocListState extends State<DocList> {
           //for (int i = 0; i <= count - 1; i++) {
           //docList.add(Doc.fromObject(result[i]));
           //}
+          debugPrint("WORKED!");
           List<Doc> docList =
               result.map((document) => Doc.fromObject(document)).toList();
-
+          debugPrint("${docList.length}");
           setState(() {
             if (this.docs.length > 0) this.docs.clear();
             this.docs = docList;
-            this.count = count;
+            this.count = docList.length;
+            debugPrint("${this.count}");
           });
         }
       });

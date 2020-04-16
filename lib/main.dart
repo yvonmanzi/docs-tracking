@@ -11,7 +11,8 @@ class DocExpiry extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'DocExpiry',
       theme: ThemeData(
-        primarySwatch: Colors.indigo,
+        primarySwatch: Colors.deepPurple,
+        secondaryHeaderColor: Colors.deepOrange,
       ),
       home: DocList(),
     );
